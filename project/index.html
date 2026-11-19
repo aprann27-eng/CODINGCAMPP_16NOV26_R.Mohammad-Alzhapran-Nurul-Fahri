@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List Life Dashboard</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- ============================================================
+         NAME MODAL — shown on first visit
+    ============================================================ -->
+    <div id="name-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-box">
+        <h2 id="modal-title">👋 Welcome!</h2>
+        <p>What should we call you?</p>
+        <input
+          type="text"
+          id="modal-name-input"
+          class="modal-input"
+          placeholder="Enter your name"
+          maxlength="30"
+          autocomplete="off"
+        />
+        <p id="modal-name-error" class="field-error hidden">Please enter a name.</p>
+        <button id="modal-save-btn" class="btn btn-primary btn-full">Get Started</button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         TOP NAV BAR
+    ============================================================ -->
+    <header class="topbar">
+      <span class="app-title">📋 Life Dashboard</span>
+      <div class="topbar-actions">
+        <!-- Light / Dark Mode Toggle -->
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode" title="Toggle light/dark mode">
+          <span id="theme-icon">🌙</span>
+        </button>
+        <!-- Edit user name -->
+        <button id="edit-name-btn" class="icon-btn" aria-label="Edit user name" title="Change your name">
+          ✏️
+        </button>
+      </div>
+    </header>
+
+    <!-- ============================================================
+         MAIN LAYOUT
+    ============================================================ -->
+    <main class="dashboard">
+
+      <!-- ── GREETING SECTION ──────────────────────────────────── -->
+      <section class="card greeting-card" aria-label="Greeting">
+        <div class="greeting-left">
+          <h1 id="greeting-text" class="greeting-heading">Good Morning</h1>
+          <p id="greeting-date" class="greeting-date">Thursday, 19 November 2026</p>
+        </div>
+        <div class="greeting-right">
+          <p id="greeting-time" class="greeting-time" aria-live="polite">00:00:00</p>
+        </div>
+      </section>
+
+      <!-- ── MIDDLE ROW: Pomodoro + Quick Links ────────────────── -->
+      <div class="middle-row">
+
+        <!-- ── FOCUS TIMER ──────────────────────────────────────── -->
+        <section class="card timer-card" aria-label="Pomodoro Focus Timer">
+          <h2 class="card-title">🍅 Focus Timer</h2>
+          <div id="timer-display" class="timer-display" aria-live="polite" aria-atomic="true">25:00</div>
+          <div class="timer-controls">
+            <button id="timer-start" class="btn btn-primary" aria-label="Start timer">▶ Start</button>
+            <button id="timer-stop"  class="btn btn-secondary" aria-label="Stop timer" disabled>⏹ Stop</button>
+            <button id="timer-reset" class="btn btn-ghost" aria-label="Reset timer">↩ Reset</button>
+          </div>
+        </section>
+
+        <!-- ── QUICK LINKS ──────────────────────────────────────── -->
+        <section class="card links-card" aria-label="Quick Links">
+          <h2 class="card-title">🔗 Quick Links</h2>
+
+          <!-- Add link form -->
+          <form id="link-form" class="link-form" novalidate>
+            <input
+              type="text"
+              id="link-name-input"
+              class="text-input"
+              placeholder="Site name (e.g. GitHub)"
+              maxlength="40"
+              autocomplete="off"
+              aria-label="Website name"
+            />
+            <input
+              type="url"
+              id="link-url-input"
+              class="text-input"
+              placeholder="URL (e.g. https://github.com)"
+              autocomplete="off"
+              aria-label="Website URL"
+            />
+            <p id="link-error" class="field-error hidden"></p>
+            <button type="submit" class="btn btn-primary btn-full">+ Add Link</button>
+          </form>
+
+          <!-- Links list -->
+          <ul id="links-list" class="links-list" aria-label="Saved quick links"></ul>
+        </section>
+      </div>
+
+      <!-- ── TO-DO LIST ─────────────────────────────────────────── -->
+      <section class="card todo-card" aria-label="To-Do List">
+        <h2 class="card-title">✅ To-Do List</h2>
+
+        <!-- Add task form -->
+        <form id="task-form" class="task-form" novalidate>
+          <input
+            type="text"
+            id="task-input"
+            class="text-input"
+            placeholder="Add a new task…"
+            maxlength="120"
+            autocomplete="off"
+            aria-label="New task"
+          />
+          <button type="submit" class="btn btn-primary" aria-label="Add task">+ Add</button>
+        </form>
+        <p id="task-error" class="field-error hidden"></p>
+
+        <!-- Task counters -->
+        <div class="task-stats">
+          <span id="task-total">0 tasks</span>
+          <span id="task-done">0 completed</span>
+        </div>
+
+        <!-- Tasks list -->
+        <ul id="task-list" class="task-list" aria-label="Task list" aria-live="polite"></ul>
+      </section>
+
+    </main>
+
+    <footer class="app-footer">
+      <p>To-Do List Life Dashboard &mdash; built with ❤️ &amp; Vanilla JS</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
